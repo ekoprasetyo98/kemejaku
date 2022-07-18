@@ -4,27 +4,25 @@
 <div class="container">
     <div class="row justify-content-center">
         <ul class="navbar-nav">
-
-            <?php
-            $pesanan = \App\Pesanan::where('user_id',Auth::user()->id)->where('status',0)->first();
-            
-            if($notif = \App\PesananDetail::where('pesanan_id',0)->count()):?>
-                
-                
+            <?php if($pesanan = \App\Pesanan::where('user_id',Auth::user()->id)->where('status',0)->first()): ?>
+            <?php if($notif = \App\PesananDetail::where('pesanan_id',0)->count()):?>
                 <li class="nav-item">
                     <a class="nav-link ml-3" href="/keranjang"><i class="bi bi-cart-plus"></i>0</a>
                 </li>
-                <?php elseif($notif = \App\PesananDetail::where('pesanan_id',$pesanan->id)->count()):?>
+            <?php elseif($notif = \App\PesananDetail::where('pesanan_id',$pesanan->id)->count()):?>
                 <li class="nav-item">
                     <a class="nav-link ml-3" href="/keranjang"><i class="bi bi-cart-plus"></i><sup>{{$notif}}</sup></a>
                 </li>
-                <?php else :?>
+            <?php else :?>
                 <li class="nav-item">
                     <a class="nav-link ml-3" href="/keranjang"><i class="bi bi-cart-plus"></i></a>
                 </li>
                 
                 
-                <?php endif?>
+            <?php endif?>
+            <?php elseif($pesanan = \App\Pesanan::where('user_id',Auth::user()->id == null)->where('status',0)->first()):?>
+                <b>Kosong</b>
+            <?php endif?>
             </ul>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">

@@ -83,8 +83,14 @@ class PesanController extends Controller
 
 
     public function keranjang(){
-        $pesanan = Pesanan::where('user_id',Auth::user()->id)->where('status',0)->first();
-        $pesananDetail = PesananDetail::where('pesanan_id',$pesanan->id)->get();
+        
+        if ($pesanan = Pesanan::where('user_id',Auth::user()->id)->where('status',0)->first()) {
+            # code...
+            $pesananDetail = PesananDetail::where('pesanan_id',$pesanan->id)->get();
+        }elseif($pesanan = Pesanan::where('user_id',Auth::user()->id)->where('status',1)->first()) {
+            # code...
+            $pesananDetail = PesananDetail::where('pesanan_id',$pesanan->id)->get();
+        }
         return view('order/keranjang',compact('pesanan','pesananDetail'));
     }
 
@@ -98,6 +104,14 @@ class PesanController extends Controller
         $user = Pesanan::where('user_id',Auth::user()->id)->where('status',0)->first();
         $user->update();
         $pesananDetail->delete();
+        return redirect('/keranjang');
+    }
+
+    public function checkout(){
+        $pesanan = Pesanan::where('user_id',Auth::user()->id)->where('status',0)->first();
+        $pesanan->status = 1;
+        $pesanan->update();
+
         return redirect('/keranjang');
     }
 }

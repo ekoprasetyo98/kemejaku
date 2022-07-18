@@ -56,10 +56,6 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @php
-                            
-                            
-                            @endphp
                             
                         @guest
                             <li class="nav-item">

@@ -22,3 +22,4 @@ Route::get('/pesan/barang/{id}','PesanController@index');
 Route::post('/pesan/order/{id}','PesanController@pesan');
 Route::get('/keranjang','PesanController@keranjang');
 Route::get('/delete/keranjang/{id}','PesanController@delete');
+Route::get('/checkout','PesanController@checkout');

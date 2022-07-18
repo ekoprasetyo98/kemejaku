@@ -17,6 +17,8 @@
         </div>
         <div class="card-body">
 
+            <?php
+                if ($pesanan->status ==0) : ?>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -29,12 +31,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                        if (empty($pesananDetail)) : ?>
-                        <h2>Data belum ada</h2>
 
                     
-                    <?php else :?>
                         <?php $no=1;?>
                     @foreach ($pesananDetail as $d)
                     <tr>
@@ -46,12 +44,16 @@
                         <td><a href="/delete/keranjang/{{$d->id}}" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a></td>
                     </tr>
                     @endforeach
-                    <?php endif?>
                     <tr>
                         <td colspan="4" align="right"><b>Total Harga :</b></td>
-                        <td colspan="2"><b>Rp.{{number_format($pesanan->jumlah_harga)}}</b></td>
+                        <td><b>Rp.{{number_format($pesanan->jumlah_harga)}}</b></td>
+                        <td><a href="/checkout" class="btn btn-success">Bayar Sekarang</a></td>
                     </tr>
+                    <?php elseif($pesanan->status == 1) :?>
+                    <h2>Ayo pesan kemaja lagi yuk!</h2>
+                    <?php endif?>
                 </tbody>
+                
             </table>
         </div>
     </div>
