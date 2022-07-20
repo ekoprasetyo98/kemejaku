@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Controller@index');
 
 Auth::routes();
 
@@ -23,3 +21,4 @@ Route::post('/pesan/order/{id}','PesanController@pesan');
 Route::get('/keranjang','PesanController@keranjang');
 Route::get('/delete/keranjang/{id}','PesanController@delete');
 Route::get('/checkout','PesanController@checkout');
+Route::get('/profile','ProfileController@index');

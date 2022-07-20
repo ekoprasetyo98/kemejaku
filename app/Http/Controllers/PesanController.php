@@ -102,6 +102,7 @@ class PesanController extends Controller
         $pesanan->update();
 
         $user = Pesanan::where('user_id',Auth::user()->id)->where('status',0)->first();
+        // $pesanan->status = 2;
         $user->update();
         $pesananDetail->delete();
         return redirect('/keranjang');
