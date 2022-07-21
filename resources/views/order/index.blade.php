@@ -25,7 +25,7 @@
                             {{csrf_field()}}
                             <label for="">Jumlah pesanan</label>
                             <input required  type="number" name="jumlah_pesan" class="form-control">
-                            <button type="submit" onclick="alert()" class="btn btn-warning mt-3"><i class="bi bi-cart-plus"></i> Pesan Sekarang</button>
+                            <button type="submit"  class="btn btn-warning mt-3"><i class="bi bi-cart-plus"></i> Pesan Sekarang</button>
                         </form>
                     </div>
                 </div>

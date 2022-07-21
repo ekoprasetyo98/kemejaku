@@ -44,6 +44,7 @@ class PesanController extends Controller
             $pesanan->user_id = Auth::user()->id;
             $pesanan->tgl_order = $tanggal;
             $pesanan->status = 0;
+            $pesanan->kode = mt_rand(100,999);
             $pesanan->jumlah_harga = 0;
             $pesanan->save(); 
         }
@@ -111,9 +112,10 @@ class PesanController extends Controller
     public function checkout(){
         
         $pesanan = Pesanan::where('user_id',Auth::user()->id)->where('status',0)->first();
+        $pesananId = $pesanan->id;
         $pesanan->status = 1;
         $pesanan->update();
 
-        return redirect('/keranjang');
+        return redirect('/history/detail/'.$pesananId);
     }
 }

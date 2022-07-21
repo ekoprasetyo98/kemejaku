@@ -23,3 +23,5 @@ Route::get('/delete/keranjang/{id}','PesanController@delete');
 Route::get('/checkout','PesanController@checkout');
 Route::get('/profile','ProfileController@index');
 Route::post('/profile/update','ProfileController@update');
+Route::get('/history','HistoryController@index');
+Route::get('/history/detail/{id}','HistoryController@detail');
