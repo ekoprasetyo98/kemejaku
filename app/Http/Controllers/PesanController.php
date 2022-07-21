@@ -109,6 +109,7 @@ class PesanController extends Controller
     }
 
     public function checkout(){
+        
         $pesanan = Pesanan::where('user_id',Auth::user()->id)->where('status',0)->first();
         $pesanan->status = 1;
         $pesanan->update();

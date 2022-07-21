@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'Controller@index');
+Route::get('/', 'Controller@produk');
 
 Auth::routes();
 
@@ -22,3 +22,4 @@ Route::get('/keranjang','PesanController@keranjang');
 Route::get('/delete/keranjang/{id}','PesanController@delete');
 Route::get('/checkout','PesanController@checkout');
 Route::get('/profile','ProfileController@index');
+Route::post('/profile/update','ProfileController@update');

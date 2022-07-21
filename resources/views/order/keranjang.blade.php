@@ -47,7 +47,7 @@
                     <tr>
                         <td colspan="4" align="right"><b>Total Harga :</b></td>
                         <td><b>Rp.{{number_format($pesanan->jumlah_harga)}}</b></td>
-
+                        
                         <?php if($pesanan->jumlah_harga >1):?>
                         <td><a href="/checkout" class="btn btn-success">Bayar Sekarang</a></td>
                         <?php else :?>
